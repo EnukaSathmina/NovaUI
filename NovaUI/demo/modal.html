@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Modals - NovaUI</title>
+
+  <link rel="stylesheet" href="../styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* GUI & LAYOUT */
+    body { font-family: 'Inter', sans-serif; background: #050814; color: white; margin: 0; padding: 40px; }
+    .container { max-width: 1100px; margin: auto; }
+    a.back-link { color: #94a3b8; text-decoration: none; display: inline-block; margin-bottom: 20px; font-size: 14px; }
+    h1 { margin-bottom: 30px; font-size: 32px; }
+
+    .preview-box { 
+      background: rgba(255, 255, 255, 0.02); 
+      border: 1px solid rgba(255, 255, 255, 0.05); 
+      border-radius: 20px; 
+      padding: 30px; 
+      margin-bottom: 30px; 
+      backdrop-filter: blur(10px);
+    }
+    
+    .preview-title { font-size: 12px; color: #6366f1; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
+    
+    .row { display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap; }
+    .live { flex: 0.8; display: flex; flex-direction: column; gap: 10px; align-items: center; min-width: 300px; }
+    .code { flex: 1.2; min-width: 300px; }
+
+    pre { background: #0a0a0f; padding: 14px; border-radius: 10px; font-size: 13px; overflow-x: auto; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 8px; color: #e5e7eb; }
+    button.copy { padding: 7px 14px; border: none; cursor: pointer; border-radius: 7px; background: #6366f1; color: white; font-size: 11px; font-weight: 700; margin-bottom: 15px; margin-right: 5px; transition: 0.2s; }
+    button.copy:hover { background: #4f46e5; }
+
+
+    .btn-trigger { padding: 12px 24px; background: #6366f1; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s; width: 100%; max-width: 200px; }
+    
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);
+      display: none; justify-content: center; align-items: center; z-index: 1000;
+    }
+
+    .modal-content {
+      background: #0f111a; border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 32px; border-radius: 24px; max-width: 400px; width: 90%;
+      text-align: center; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+      animation: modalFade 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes modalFade {
+      from { transform: scale(0.9) translateY(10px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+
+    /* Shared Elements */
+    .modal-input {
+      width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      color: white; outline: none; box-sizing: border-box;
+    }
+    .icon-circle { width: 60px; height: 60px; background: rgba(46, 204, 113, 0.1); color: #2ecc71; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; margin: 0 auto 20px; }
+    .img-placeholder { width: 100%; height: 120px; background: linear-gradient(45deg, #1e1b4b, #312e81); border-radius: 12px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; font-size: 40px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <a href="index.html" class="back-link">← Back to Home</a>
+  <h1>Modals Library</h1>
+
+  <div class="preview-box">
+    <div class="preview-title">Standard Informational</div>
+    <div class="row">
+      <div class="live"><button class="btn-trigger" onclick="openM('m1')">Open Standard</button></div>
+      <div class="code">
+        <pre id="h1">&lt;div class="modal-content"&gt;
+  &lt;h2&gt;Info&lt;/h2&gt;
+  &lt;p&gt;Basic details...&lt;/p&gt;
+&lt;/div&gt;</pre>
+        <button class="copy" onclick="copy('h1')">HTML</button>
+        <button class="copy" onclick="copy('css_core')">CSS</button>
+        <button class="copy" onclick="copy('js_core')">JS</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-box">
+    <div class="preview-title">Success State</div>
+    <div class="row">
+      <div class="live"><button class="btn-trigger" style="background:#2ecc71" onclick="openM('m2')">Open Success</button></div>
+      <div class="code">
+        <pre id="h2">&lt;div class="icon-circle"&gt;✓&lt;/div&gt;
+&lt;h2&gt;Complete&lt;/h2&gt;</pre>
+        <button class="copy" onclick="copy('h2')">HTML</button>
+        <button class="copy" onclick="copy('css_core')">CSS</button>
+        <button class="copy" onclick="copy('js_core')">JS</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-box">
+    <div class="preview-title">Danger / Delete</div>
+    <div class="row">
+      <div class="live"><button class="btn-trigger" style="background:#e74c3c" onclick="openM('m3')">Open Danger</button></div>
+      <div class="code">
+        <pre id="h3">&lt;h2 style="color:#e74c3c"&gt;Delete?&lt;/h2&gt;
+&lt;button&gt;Confirm&lt;/button&gt;</pre>
+        <button class="copy" onclick="copy('h3')">HTML</button>
+        <button class="copy" onclick="copy('css_core')">CSS</button>
+        <button class="copy" onclick="copy('js_core')">JS</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-box">
+    <div class="preview-title">Authentication</div>
+    <div class="row">
+      <div class="live"><button class="btn-trigger" style="background:#6366f1" onclick="openM('m4')">Open Login</button></div>
+      <div class="code">
+        <pre id="h4">&lt;input type="email" class="modal-input"&gt;
+&lt;input type="password" class="modal-input"&gt;</pre>
+        <button class="copy" onclick="copy('h4')">HTML</button>
+        <button class="copy" onclick="copy('css_core')">CSS</button>
+        <button class="copy" onclick="copy('js_core')">JS</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-box">
+    <div class="preview-title">Feature Announcement</div>
+    <div class="row">
+      <div class="live"><button class="btn-trigger" style="background:#8b5cf6" onclick="openM('m5')">Open Feature</button></div>
+      <div class="code">
+        <pre id="h5">&lt;div class="img-placeholder"&gt;🚀&lt;/div&gt;
+&lt;h2&gt;New Updates&lt;/h2&gt;</pre>
+        <button class="copy" onclick="copy('h5')">HTML</button>
+        <button class="copy" onclick="copy('css_core')">CSS</button>
+        <button class="copy" onclick="copy('js_core')">JS</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-box">
+    <div class="preview-title">Newsletter Signup</div>
+    <div class="row">
+      <div class="live"><button class="btn-trigger" style="background:#f59e0b" onclick="openM('m6')">Open Newsletter</button></div>
+      <div class="code">
+        <pre id="h6">&lt;h2&gt;Subscribe&lt;/h2&gt;
+&lt;input placeholder="Email"&gt;</pre>
+        <button class="copy" onclick="copy('h6')">HTML</button>
+        <button class="copy" onclick="copy('css_core')">CSS</button>
+        <button class="copy" onclick="copy('js_core')">JS</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<pre id="css_core" style="display:none;">.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); display: none; justify-content: center; align-items: center; }
+.modal-content { background: #0f111a; border: 1px solid rgba(255,255,255,0.1); padding: 32px; border-radius: 24px; max-width: 400px; text-align: center; }</pre>
+
+<pre id="js_core" style="display:none;">function openM(id) { document.getElementById(id).style.display = "flex"; }
+function closeAll() { document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = "none"); }</pre>
+
+<div class="modal-overlay" id="m1" onclick="closeOutside(event)"><div class="modal-content"><h2>Standard Info</h2><p>General application information.</p><button class="btn-trigger" onclick="closeAll()">Close</button></div></div>
+<div class="modal-overlay" id="m2" onclick="closeOutside(event)"><div class="modal-content"><div class="icon-circle">✓</div><h2>Success</h2><p>Task completed successfully.</p><button class="btn-trigger" style="background:#2ecc71" onclick="closeAll()">Great</button></div></div>
+<div class="modal-overlay" id="m3" onclick="closeOutside(event)"><div class="modal-content"><h2 style="color:#e74c3c">Delete?</h2><p>This action cannot be undone.</p><button class="btn-trigger" style="background:#e74c3c" onclick="closeAll()">Delete</button></div></div>
+<div class="modal-overlay" id="m4" onclick="closeOutside(event)"><div class="modal-content"><h2>Login</h2><input type="email" class="modal-input" placeholder="Email"><input type="password" class="modal-input" placeholder="Password"><button class="btn-trigger" onclick="closeAll()">Sign In</button></div></div>
+<div class="modal-overlay" id="m5" onclick="closeOutside(event)"><div class="modal-content"><div class="img-placeholder">🚀</div><h2>V2.0 Update</h2><p>Explore our new components.</p><button class="btn-trigger" style="background:#8b5cf6" onclick="closeAll()">Explore</button></div></div>
+<div class="modal-overlay" id="m6" onclick="closeOutside(event)"><div class="modal-content"><h2>Join Us</h2><input type="email" class="modal-input" placeholder="Your Email"><button class="btn-trigger" style="background:#f59e0b" onclick="closeAll()">Join Now</button></div></div>
+
+<script>
+function openM(id) { document.getElementById(id).style.display = "flex"; }
+function closeAll() { document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = "none"); }
+function closeOutside(e) { if (e.target.classList.contains('modal-overlay')) closeAll(); }
+function copy(id) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    const old = btn.innerText;
+    btn.innerText = "Copied!";
+    setTimeout(() => btn.innerText = old, 1500);
+  });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cards - NovaUI</title>
+
+  <link rel="stylesheet" href="../styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #050814; color: white; margin: 0; padding: 40px; }
+    .container { max-width: 1100px; margin: auto; }
+    a.back-link { color: #94a3b8; text-decoration: none; display: inline-block; margin-bottom: 20px; font-size: 14px; }
+    h1 { margin-bottom: 30px; font-size: 32px; }
+
+    .preview-box { 
+      background: rgba(255, 255, 255, 0.02); 
+      border: 1px solid rgba(255, 255, 255, 0.05); 
+      border-radius: 20px; 
+      padding: 30px; 
+      margin-bottom: 30px; 
+      backdrop-filter: blur(10px);
+    }
+    
+    .preview-title { font-size: 12px; color: #6366f1; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
+    
+    .row { display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap; }
+    .live { flex: 0.8; display: flex; justify-content: center; min-width: 300px; }
+    .code { flex: 1.2; min-width: 300px; }
+
+    pre { background: #0a0a0f; padding: 14px; border-radius: 10px; font-size: 13px; overflow-x: auto; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 8px; color: #e5e7eb; }
+    button.copy { padding: 7px 14px; border: none; cursor: pointer; border-radius: 7px; background: #6366f1; color: white; font-size: 12px; font-weight: 600; margin-bottom: 15px; margin-right: 5px; transition: 0.2s; }
+    button.copy:hover { background: #4f46e5; }
+
+    .card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 24px;
+      transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 100%;
+      max-width: 320px;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(99,102,241,0.4);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    }
+
+    .card h3 { margin: 0 0 10px 0; font-size: 20px; color: white; }
+    .card p { margin: 0; font-size: 14px; color: #94a3b8; line-height: 1.6; }
+
+    .card-icon { width: 45px; height: 45px; background: linear-gradient(135deg, #6366f1, #4f46e5); border-radius: 12px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+    .price { font-size: 32px; font-weight: 700; margin: 15px 0; color: white; }
+    .price span { font-size: 14px; color: #64748b; }
+    .badge { position: absolute; top: 12px; right: 12px; background: rgba(99,102,241,0.2); color: #818cf8; font-size: 10px; padding: 4px 8px; border-radius: 20px; font-weight: 700; }
+    .stat-val { font-size: 28px; font-weight: 700; color: white; margin: 5px 0; }
+    .stat-diff { font-size: 12px; color: #2ecc71; font-weight: 600; }
+    .card-flex { display: flex; align-items: center; gap: 15px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <a href="index.html" class="back-link">← Back to Home</a>
+  <h1>Card Components</h1>
+
+  <div class="preview-box">
+    <div class="preview-title">Basic Card</div>
+    <div class="row">
+      <div class="live">
+        <div class="card">
+          <h3>Basic Card</h3>
+          <p>A simple, clean glassmorphic container for content blocks.</p>
+        </div>
+      </div>
+      <div class="code">
+        <pre id="h0">&lt;div class="card"&gt;
+  &lt;h3&gt;Basic Card&lt;/h3&gt;
+  &lt;p&gt;Content goes here...&lt;/p&gt;
+&lt;/div&gt;</pre>
+        <button class="copy" onclick="copy('h0')">Copy HTML</button>
+        <pre id="c0">.card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 24px;
+  transition: 0.25s ease;
+}</pre>
+        <button class="copy" onclick="copy('c0')">Copy CSS</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-box">
+    <div class="preview-title">Feature Card</div>
+    <div class="row">
+      <div class="live">
+        <div class="card">
+          <div class="card-icon">✨</div>
+          <h3>Modern UI</h3>
+          <p>NovaUI uses glassmorphism and subtle gradients for a premium feel.</p>
+        </div>
+      </div>
+      <div class="code">
+        <pre id="h1">&lt;div class="card"&gt;
+  &lt;div class="card-icon"&gt;✨&lt;/div&gt;
+  &lt;h3&gt;Modern UI&lt;/h3&gt;
+  &lt;p&gt;NovaUI uses glassmorphism...&lt;/p&gt;
+&lt;/div&gt;</pre>
+        <button class="copy" onclick="copy('h1')">Copy HTML</button>
+        <pre id="c1">.card-icon {
+  width: 45px; height: 45px;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+}</pre>
+        <button class="copy" onclick="copy('c1')">Copy CSS</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-box">
+    <div class="preview-title">Stats Card</div>
+    <div class="row">
+      <div class="live">
+        <div class="card">
+          <p style="text-transform: uppercase; font-size: 11px; letter-spacing: 1px;">Revenue</p>
+          <div class="stat-val">$42,850</div>
+          <div class="stat-diff">↑ 12.5%</div>
+        </div>
+      </div>
+      <div class="code">
+        <pre id="h2">&lt;div class="card"&gt;
+  &lt;div class="stat-val"&gt;$42,850&lt;/div&gt;
+  &lt;div class="stat-diff"&gt;↑ 12.5%&lt;/div&gt;
+&lt;/div&gt;</pre>
+        <button class="copy" onclick="copy('h2')">Copy HTML</button>
+        <pre id="c2">.stat-val { font-size: 28px; font-weight: 700; color: white; }
+.stat-diff { font-size: 12px; color: #2ecc71; }</pre>
+        <button class="copy" onclick="copy('c2')">Copy CSS</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-box">
+    <div class="preview-title">Pricing Card</div>
+    <div class="row">
+      <div class="live">
+        <div class="card">
+          <span class="badge">PRO</span>
+          <h3>Pro Plan</h3>
+          <div class="price">$29<span>/mo</span></div>
+          <button style="width:100%; padding:10px; border-radius:8px; background:#6366f1; color:white; border:none; cursor:pointer;">Select</button>
+        </div>
+      </div>
+      <div class="code">
+        <pre id="h3">&lt;div class="card"&gt;
+  &lt;span class="badge"&gt;PRO&lt;/span&gt;
+  &lt;h3&gt;Pro Plan&lt;/h3&gt;
+  &lt;div class="price"&gt;$29/mo&lt;/div&gt;
+&lt;/div&gt;</pre>
+        <button class="copy" onclick="copy('h3')">Copy HTML</button>
+        <pre id="c3">.price { font-size: 32px; font-weight: 700; color: white; }
+.badge { position: absolute; top: 12px; right: 12px; }</pre>
+        <button class="copy" onclick="copy('c3')">Copy CSS</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-box">
+    <div class="preview-title">Horizontal Notification</div>
+    <div class="row">
+      <div class="live">
+        <div class="card card-flex" style="max-width: 400px;">
+          <div class="card-icon" style="margin:0; flex-shrink:0;">🔔</div>
+          <div>
+            <h3 style="font-size: 16px; margin:0;">System Alert</h3>
+            <p style="font-size: 13px;">Deploy completed successfully.</p>
+          </div>
+        </div>
+      </div>
+      <div class="code">
+        <pre id="h4">&lt;div class="card card-flex"&gt;
+  &lt;div class="card-icon"&gt;🔔&lt;/div&gt;
+  &lt;div&gt;
+    &lt;h3&gt;Alert&lt;/h3&gt;
+    &lt;p&gt;Success notification...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+        <button class="copy" onclick="copy('h4')">Copy HTML</button>
+        <pre id="c4">.card-flex { display: flex; align-items: center; gap: 15px; }</pre>
+        <button class="copy" onclick="copy('c4')">Copy CSS</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function copy(id) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    const oldText = btn.innerText;
+    btn.innerText = "Copied!";
+    setTimeout(() => { btn.innerText = oldText; }, 1500);
+  });
+}
+</script>
+
+</body>
+</html>

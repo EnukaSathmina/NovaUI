@@ -1,0 +1,11 @@
+:root {
+  --bg: #050814;
+  --text: #e5e7eb;
+  --primary: #6366f1;
+}
+
+[data-theme="light"] {
+  --bg: #ffffff;
+  --text: #0f172a;
+  --primary: #4f46e5;
+}

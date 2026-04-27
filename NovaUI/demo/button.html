@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Buttons - NovaUI</title>
+
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../components/buttons/buttons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #050814;
+      color: white;
+      margin: 0;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    a {
+      color: #aaa;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .preview-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 18px;
+      backdrop-filter: blur(12px);
+    }
+
+    .preview-title {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-bottom: 12px;
+    }
+
+    .row {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .live {
+      flex: 0.6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .code {
+      flex: 1.4;
+      max-width: 500px;
+    }
+
+    pre {
+      background: #111;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    button.copy {
+      margin-top: 8px;
+      padding: 6px 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      background: #6366f1;
+      color: white;
+      font-size: 12px;
+      margin-right: 5px;
+    }
+
+    .btn {
+      padding: 10px 16px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn-primary { background: linear-gradient(135deg, #6366f1, #4f46e5); color: white; box-shadow: 0 0 25px rgba(99,102,241,0.4); }
+    .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.25); color: white; }
+    .btn-ghost { background: transparent; color: rgba(255,255,255,0.8); }
+    .btn-secondary { background: #2a2f3a; color: white; }
+    .btn-danger { background: #ff4d4d; color: white; }
+    .btn-success { background: #2ecc71; color: white; }
+    .btn-warning { background: #f1c40f; color: black; }
+    .btn-link { background: none; color: #7aa2ff; padding: 0; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <a href="index.html">← Back to Home</a>
+  <h1>Buttons</h1>
+
+  <div class="preview-box">
+    <div class="preview-title">Primary Button</div>
+    <div class="row">
+      <div class="live"><button class="btn btn-primary">Primary</button></div>
+      <div class="code">
+        <pre id="h1">&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;</pre>
+        <button class="copy" onclick="copy('h1')">Copy HTML</button>
+        <pre id="c1">.btn-primary {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+  filter: brightness(1.1);
+}</pre>
+        <button class="copy" onclick="copy('c1')">Copy CSS</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-box">
+    <div class="preview-title">Outline Button</div>
+    <div class="row">
+      <div class="live"><button class="btn btn-outline">Outline</button></div>
+      <div class="code">
+        <pre id="h2">&lt;button class="btn btn-outline"&gt;Outline&lt;/button&gt;</pre>
+        <button class="copy" onclick="copy('h2')">Copy HTML</button>
+        <pre id="c2">.btn-outline {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e5e7eb;
+  backdrop-filter: blur(8px);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: white;
+  color: white;
+}</pre>
+        <button class="copy" onclick="copy('c2')">Copy CSS</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-box">
+    <div class="preview-title">Ghost Button</div>
+    <div class="row">
+      <div class="live"><button class="btn btn-ghost">Ghost</button></div>
+      <div class="code">
+        <pre id="h3">&lt;button class="btn btn-ghost"&gt;Ghost&lt;/button&gt;</pre>
+        <button class="copy" onclick="copy('h3')">Copy HTML</button>
+        <pre id="c3">.btn-ghost {
+  background: transparent;
+  color: #94a3b8;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}</pre>
+        <button class="copy" onclick="copy('c3')">Copy CSS</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-box">
+    <div class="preview-title">Secondary Button</div>
+    <div class="row">
+      <div class="live"><button class="btn btn-secondary">Secondary</button></div>
+      <div class="code">
+        <pre id="h4">&lt;button class="btn btn-secondary"&gt;Secondary&lt;/button&gt;</pre>
+        <button class="copy" onclick="copy('h4')">Copy HTML</button>
+        <pre id="c4">.btn-secondary {
+  background: #2a2f3a;
+  color: #e5e7eb;
+}
+
+.btn-secondary:hover {
+  background: #353b4a;
+}</pre>
+        <button class="copy" onclick="copy('c4')">Copy CSS</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-box">
+    <div class="preview-title">Danger Button</div>
+    <div class="row">
+      <div class="live"><button class="btn btn-danger">Delete</button></div>
+      <div class="code">
+        <pre id="h5">&lt;button class="btn btn-danger"&gt;Delete&lt;/button&gt;</pre>
+        <button class="copy" onclick="copy('h5')">Copy HTML</button>
+        <pre id="c5">.btn-danger {
+  background: #ff4d4d;
+  color: white;
+  box-shadow: 0 0 15px rgba(255, 77, 77, 0.2);
+}
+
+.btn-danger:hover {
+  background: #e63c3c;
+  box-shadow: 0 0 25px rgba(255, 77, 77, 0.4);
+}</pre>
+        <button class="copy" onclick="copy('c5')">Copy CSS</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-box">
+    <div class="preview-title">Success Button</div>
+    <div class="row">
+      <div class="live"><button class="btn btn-success">Success</button></div>
+      <div class="code">
+        <pre id="h6">&lt;button class="btn btn-success"&gt;Success&lt;/button&gt;</pre>
+        <button class="copy" onclick="copy('h6')">Copy HTML</button>
+        <pre id="c6">.btn-success {
+  background: #2ecc71;
+  color: white;
+  box-shadow: 0 0 15px rgba(46, 204, 113, 0.2);
+}
+
+.btn-success:hover {
+  background: #27ae60;
+  box-shadow: 0 0 25px rgba(46, 204, 113, 0.4);
+}</pre>
+        <button class="copy" onclick="copy('c6')">Copy CSS</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-box">
+    <div class="preview-title">Warning Button</div>
+    <div class="row">
+      <div class="live"><button class="btn btn-warning">Warning</button></div>
+      <div class="code">
+        <pre id="h7">&lt;button class="btn btn-warning"&gt;Warning&lt;/button&gt;</pre>
+        <button class="copy" onclick="copy('h7')">Copy HTML</button>
+        <pre id="c7">.btn-warning {
+  background: #f1c40f;
+  color: black;
+  box-shadow: 0 0 15px rgba(241, 196, 15, 0.2);
+}
+
+.btn-warning:hover {
+  background: #d4ac0d;
+  box-shadow: 0 0 25px rgba(241, 196, 15, 0.4);
+}</pre>
+        <button class="copy" onclick="copy('c7')">Copy CSS</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-box">
+    <div class="preview-title">Link Button</div>
+    <div class="row">
+      <div class="live"><button class="btn btn-link">Link</button></div>
+      <div class="code">
+        <pre id="h8">&lt;button class="btn btn-link"&gt;Link&lt;/button&gt;</pre>
+        <button class="copy" onclick="copy('h8')">Copy HTML</button>
+        <pre id="c8">.btn-link { background: none; color: #7aa2ff; text-decoration: underline; }</pre>
+        <button class="copy" onclick="copy('c8')">Copy CSS</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function copy(id) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(() => { alert("Copied!"); });
+}
+</script>
+
+</body>
+</html>
