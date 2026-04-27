@@ -36,6 +36,14 @@ NovaUI isn't just another CSS library. It’s a design system focused on depth, 
 
 ---
 
+## 📷 UI Preview
+
+<div align="center">
+  <img src="https://github.com/EnukaSathmina/NovaUI/blob/main/img%20(2).png?raw=true" width="800" />
+</div>
+
+---
+
 ## 📦 Component Library
 
 | Component | Status | Description |
